@@ -13,4 +13,4 @@ The parameters are accesible in the twig templates via queryParams.
 
 ## Installation
 
-Just copy the php file into the plugins folder. The plugin is configured to be enabled by defaut.
+Just copy the php file into the plugins folder. The plugin is configured to be enabled by default.
