@@ -15,7 +15,7 @@
  * The parameters are accesible in the twig templates via queryParams.
  *
  * @author mightyplow
- * @link
+ * @link https://github.com/mightyplow/pico_QueryParamProvider
  */
 
 class QueryParamProvider extends AbstractPicoPlugin {
