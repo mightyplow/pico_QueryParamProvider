@@ -21,7 +21,7 @@
 class QueryParamProvider extends AbstractPicoPlugin {
     protected $enabled = true;
 
-    public function onPageRendering (&$twig, &$twigVars) {
+    public function onPageRendering(&$twig, &$twigVars) {
         $queryString = $_SERVER['QUERY_STRING'];
         $queryParams = explode('&', $queryString);
 
@@ -33,8 +33,20 @@ class QueryParamProvider extends AbstractPicoPlugin {
         $params = [];
         foreach ($queryParams as $param) {
             if (!empty($param)) {
-                list($key, $value) = explode('=', $param);
-                $params[$key] = isset($value) ? $value : true;
+                $parts = explode('=', $param);
+                $numParts = count($parts);
+
+                if ($numParts >= 1 && $numParts <= 2) {
+                    if ($numParts === 1) {
+                        $key = $parts[0];
+                        $value = true;
+                    } else if ($numParts === 2) {
+                        $key = $parts[0];
+                        $value = $parts[1];
+                    }
+
+                    $params[$key] = $value;
+                }
             }
         }
 
